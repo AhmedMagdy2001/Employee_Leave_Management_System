@@ -1,0 +1,43 @@
+﻿@model EmployeeLeaveManagement.Models.LeaveType
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 class="mb-4">Edit Leave Type</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="LeaveTypeName" class="control-label"></label>
+                <input asp-for="LeaveTypeName" class="form-control" placeholder="Enter Leave Type" />
+                <span asp-validation-for="LeaveTypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumDaysAllowed" class="control-label"></label>
+                <input asp-for="MaximumDaysAllowed" class="form-control" placeholder="Enter maximum days" />
+                <span asp-validation-for="MaximumDaysAllowed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    Update
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

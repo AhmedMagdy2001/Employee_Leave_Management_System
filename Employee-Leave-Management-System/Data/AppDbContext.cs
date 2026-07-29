@@ -27,5 +27,9 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Employee>()
             .HasIndex(e => e.Email)
             .IsUnique();
+
+        modelBuilder.Entity<LeaveType>()
+            .HasIndex(l => l.LeaveTypeName)
+            .IsUnique();
     }
 }
