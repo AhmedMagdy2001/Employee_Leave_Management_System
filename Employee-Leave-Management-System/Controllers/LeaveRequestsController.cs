@@ -102,6 +102,41 @@ public class LeaveRequestsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(LeaveRequestViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            await PopulateDropdowns(model);
+            return View(model);
+        }
+
+        if (!await ValidateLeaveRequest(model))
+        {
+            await PopulateDropdowns(model);
+            return View(model);
+        }
+
+        var leaveRequest = new LeaveRequest
+        {
+            EmployeeId = model.EmployeeId,
+            LeaveTypeId = model.LeaveTypeId,
+            StartDate = model.StartDate,
+            EndDate = model.EndDate,
+            Reason = model.Reason,
+            Status = LeaveStatus.Pending
+        };
+
+        _context.LeaveRequests.Add(leaveRequest);
+
+        await _context.SaveChangesAsync();
+
+        TempData["Success"] = "Leave request submitted successfully.";
+
+        return RedirectToAction(nameof(Index));
+    }
+
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)

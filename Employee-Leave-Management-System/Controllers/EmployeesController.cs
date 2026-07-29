@@ -50,19 +50,43 @@ namespace Employee_Leave_Management_System.Controllers
         }
 
         // POST: Employees/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,EmployeeCode,EmployeeName,Department,Email,PhoneNumber")] Employee employee)
         {
-            if (ModelState.IsValid)
+            if (await _context.Employees.AnyAsync(e => e.EmployeeCode == employee.EmployeeCode))
+            {
+                ModelState.AddModelError(nameof(employee.EmployeeCode),
+                    "An employee with this code already exists.");
+            }
+
+            if (await _context.Employees.AnyAsync(e => e.Email == employee.Email))
+            {
+                ModelState.AddModelError(nameof(employee.Email),
+                    "This email address is already in use.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(employee);
+            }
+
+            try
             {
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
+
+                TempData["Success"] = "Employee created successfully.";
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError(string.Empty,
+                    "An unexpected error occurred while saving the employee. Please try again.");
+
+                return View(employee);
+            }
         }
 
         // GET: Employees/Edit/5
