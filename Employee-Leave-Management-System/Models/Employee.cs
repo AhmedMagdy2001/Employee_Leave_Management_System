@@ -3,16 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeLeaveManagement.Models;
 
+
 public class Employee
 {
     public int Id { get; set; }
 
     [Required]
     [StringLength(20)]
+    [Display(Name = "Employee Code")]
     public string EmployeeCode { get; set; } = string.Empty;
 
     [Required]
     [StringLength(100)]
+    [Display(Name = "Employee Name")]
     public string EmployeeName { get; set; } = string.Empty;
 
     [Required]
@@ -24,6 +27,7 @@ public class Employee
     public string Email { get; set; } = string.Empty;
 
     [Phone]
+    [Display(Name = "Phone Number")]
     public string? PhoneNumber { get; set; }
 
     public ICollection<LeaveRequest> LeaveRequests { get; set; } = new List<LeaveRequest>();
