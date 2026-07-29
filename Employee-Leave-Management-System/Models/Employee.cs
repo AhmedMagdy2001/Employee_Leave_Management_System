@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Employee_Leave_Management_System.Models;
+namespace EmployeeLeaveManagement.Models;
 
 public class Employee
 {
