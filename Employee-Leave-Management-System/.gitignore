@@ -1,0 +1,47 @@
+## Core build outputs
+[Bb]in/
+[Cc]aptures/
+[Oo]bj/
+Generated_Code/
+
+## Visual Studio temporary files and settings
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Visual Studio Code settings
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/code-workspace
+
+## Rider / JetBrains IDE files
+.idea/
+
+## NuGet Packages
+*.nuget.props
+*.nuget.targets
+packages/
+
+## OS-generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+## Local user secrets and configuration files
+appsettings.Development.json
+appsettings.local.json
+secrets.json
+*.secrets.json
+
+## Log and database files
+*.log
+*.mdf
+*.ldf
+*.sqlite
+*.sqlite3
