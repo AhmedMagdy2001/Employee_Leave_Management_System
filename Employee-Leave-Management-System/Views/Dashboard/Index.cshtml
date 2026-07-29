@@ -1,0 +1,123 @@
+﻿@model EmployeeLeaveManagement.ViewModels.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+        <a asp-controller="Employees"
+           asp-action="Index"
+           class="text-decoration-none">
+
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-body text-center">
+
+                    <h5 class="text-muted">
+                        Employees
+                    </h5>
+
+                    <h1 class="display-5">
+                        @Model.TotalEmployees
+                    </h1>
+
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+    
+    <div class="col-md-4">
+        <a asp-controller="LeaveRequests"
+           asp-action="Index"
+           class="text-decoration-none">
+
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-body text-center">
+
+                    <h5 class="text-muted">
+                        Total Requests
+                    </h5>
+
+                    <h1 class="display-5">
+                        @Model.TotalLeaveRequests
+                    </h1>
+
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+
+    <div class="col-md-4">
+        <a asp-controller="LeaveRequests"
+           asp-action="Index"
+           class="text-decoration-none">
+
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-body text-center">
+
+                    <h5 class="text-muted">
+                        Pending Requests
+                    </h5>
+
+                    <h1 class="display-5">
+                        @Model.PendingRequests
+                    </h1>
+
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a asp-controller="LeaveRequests"
+           asp-action="Index"
+           class="text-decoration-none">
+
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-body text-center">
+
+                    <h5 class="text-muted">
+                        Approved Requests
+                    </h5>
+
+                    <h1 class="display-5">
+                        @Model.ApprovedRequests
+                    </h1>
+
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a asp-controller="LeaveRequests"
+           asp-action="Index"
+           class="text-decoration-none">
+
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-body text-center">
+
+                    <h5 class="text-muted">
+                        Rejected Requests
+                    </h5>
+
+                    <h1 class="display-5">
+                        @Model.RejectedRequests
+                    </h1>
+
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+</div>

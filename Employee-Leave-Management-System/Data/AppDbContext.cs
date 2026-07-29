@@ -31,5 +31,25 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<LeaveType>()
             .HasIndex(l => l.LeaveTypeName)
             .IsUnique();
-    }
+
+        modelBuilder.Entity<LeaveType>().HasData(
+            new LeaveType
+            {
+                Id = 1,
+                LeaveTypeName = "Annual Leave",
+                MaximumDaysAllowed = 30
+            },
+            new LeaveType
+            {
+                Id = 2,
+                LeaveTypeName = "Sick Leave",
+                MaximumDaysAllowed = 15
+            },
+            new LeaveType
+            {
+                Id = 3,
+                LeaveTypeName = "Casual Leave",
+                MaximumDaysAllowed = 7
+            });
+            }
 }
